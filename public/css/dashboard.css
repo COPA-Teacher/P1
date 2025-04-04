@@ -1,0 +1,15 @@
+/* Dashboard-specific styles will go here */
+/* This file will be loaded only on the dashboard page */
+
+/* Example dashboard-specific styles */
+.dashboard-header {
+    margin-bottom: 2rem;
+}
+
+.dashboard-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+}
+
+/* Add more dashboard-specific styles as needed */

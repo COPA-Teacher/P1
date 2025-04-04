@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title><%= pageTitle %></title>
+
+        <link rel="stylesheet" href="/css/common.css" />
+        <% if (currentPage === 'dashboard') { %>
+        <link rel="stylesheet" type="text/css" href="/css/dashboard.css" />
+        <% } else if (currentPage === 'settings') { %>
+        <link rel="stylesheet" type="text/css" href="/css/settings.css" />
+        <% } else if (currentPage === 'profile') { %>
+        <link rel="stylesheet" type="text/css" href="/css/profile.css" />
+        <% } else if (currentPage === 'forgot-password') { %>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="/css/forgot-password.css"
+        />
+        <% } else if (currentPage === 'index') { %>
+        <link rel="stylesheet" type="text/css" href="/css/index.css" />
+        <% } else if (currentPage === 'about-us') { %>
+        <link rel="stylesheet" type="text/css" href="/css/about-us.css" />
+        <% } else if (currentPage === 'contact-us') { %>
+        <link rel="stylesheet" type="text/css" href="/css/contact-us.css" />
+        <% } else if (currentPage === 'faq') { %>
+        <link rel="stylesheet" type="text/css" href="/css/faq.css" />
+        <% } else if (currentPage === 'help') { %>
+        <link rel="stylesheet" type="text/css" href="/css/help.css" />
+        <% } else if (currentPage === 'privacy-policy') { %>
+        <link rel="stylesheet" type="text/css" href="/css/privacy-policy.css" />
+        <% } else if (currentPage === 'terms-and-conditions') { %>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="/css/terms-and-conditions.css"
+        />
+        <% } %>
+    </head>
+    <body>
+        <div id="app">
+            <header class="header">
+                <div class="header-container">
+                    <a
+                        href="<%= isAuthenticated ? '/dashboard' : '/' %>"
+                        class="logo"
+                    >
+                        <span class="logo-icon">$</span>
+                        <span class="logo-text">BudgetApp</span>
+                    </a>
+
+                    <nav class="nav">
+                        <ul class="nav-list">
+                            <% if (!isAuthenticated) { %>
+                            <li
+                                class="nav-item <%= currentPage === 'about' ? 'active' : '' %>"
+                            >
+                                <a href="/about-us" class="nav-link">About</a>
+                            </li>
+                            <li
+                                class="nav-item <%= currentPage === 'contact' ? 'active' : '' %>"
+                            >
+                                <a href="/contact-us" class="nav-link"
+                                    >Contact</a
+                                >
+                            </li>
+                            <li
+                                class="nav-item <%= currentPage === 'register' ? 'active' : '' %>"
+                            >
+                                <a href="/register" class="nav-link"
+                                    >Register</a
+                                >
+                            </li>
+                            <li
+                                class="nav-item <%= currentPage === 'login' ? 'active' : '' %>"
+                            >
+                                <a href="/login" class="nav-link">Login</a>
+                            </li>
+                            <% } else { %>
+                            <li
+                                class="nav-item <%= currentPage === 'dashboard' ? 'active' : '' %>"
+                            >
+                                <a href="/dashboard" class="nav-link"
+                                    >Dashboard</a
+                                >
+                            </li>
+                            <li
+                                class="nav-item <%= currentPage === 'expense' ? 'active' : '' %>"
+                            >
+                                <a href="/expense" class="nav-link">Expense</a>
+                            </li>
+                            <li
+                                class="nav-item <%= currentPage === 'profile' ? 'active' : '' %>"
+                            >
+                                <a href="/profile" class="nav-link">Profile</a>
+                            </li>
+                            <li
+                                class="nav-item <%= currentPage === 'settings' ? 'active' : '' %>"
+                            >
+                                <a href="/settings" class="nav-link"
+                                    >Settings</a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a href="/logout" class="nav-link">Log Out</a>
+                            </li>
+                            <% } %>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+        </div>

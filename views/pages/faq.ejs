@@ -1,0 +1,53 @@
+<%- include("../partials/header") %>
+
+<div class="faq-content">
+    <h1>Frequently Asked Questions</h1>
+
+    <div class="faq-categories">
+        <button class="faq-tab active" data-category="general">General</button>
+        <button class="faq-tab" data-category="account">Account</button>
+        <button class="faq-tab" data-category="billing">Billing</button>
+    </div>
+
+    <div class="faq-items">
+        <div class="faq-category general show">
+            <div class="faq-item">
+                <div class="faq-question">What services do you offer?</div>
+                <div class="faq-answer">
+                    <p>
+                        We provide comprehensive business solutions including
+                        [Core Service 1], [Core Service 2], and [Core Service
+                        3]. See our <a href="/services">Services page</a> for
+                        details.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How do I get started?</div>
+                <div class="faq-answer">
+                    <ol>
+                        <li>Create an account</li>
+                        <li>Select your plan</li>
+                        <li>Complete onboarding</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-category account">
+            <div class="faq-item">
+                <div class="faq-question">How do I reset my password?</div>
+                <div class="faq-answer">
+                    <p>
+                        Visit our
+                        <a href="/forgot-password">password reset page</a> and
+                        enter your registered email address.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>
