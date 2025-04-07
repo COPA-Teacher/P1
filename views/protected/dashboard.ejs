@@ -1,1 +1,196 @@
-<%- include("../partials/header", ) %> <%- include("../partials/footer") %>
+<%- include("../partials/header", ) %>
+
+<div class="dashboard-container">
+    <div class="dashboard-grid">
+        <!-- Row 1 -->
+        <div class="row">
+            <!-- Column 1: Add Expense -->
+            <div class="col">
+                <div class="dashboard-card">
+                    <h2>Add Expense</h2>
+                    <form id="addExpenseForm" class="expense-form">
+                        <div class="form-group">
+                            <label for="expenseDate">Date</label>
+                            <input
+                                type="date"
+                                id="expenseDate"
+                                name="date"
+                                required
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="expenseMode">Mode</label>
+                            <select id="expenseMode" name="mode" required>
+                                <option value="">Select Mode</option>
+                                <option value="ONLINE">ONLINE</option>
+                                <option value="OFFLINE">OFFLINE</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="expenseType">Type</label>
+                            <select id="expenseType" name="type" required>
+                                <option value="">Select Type</option>
+                                <option value="CREDIT">CREDIT</option>
+                                <option value="DEBIT">DEBIT</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="expenseAmount">Amount</label>
+                            <input
+                                type="number"
+                                id="expenseAmount"
+                                name="amount"
+                                min="0"
+                                step="0.01"
+                                required
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="expenseDesc"
+                                >Description (max 30 words)</label
+                            >
+                            <textarea
+                                id="expenseDesc"
+                                name="description"
+                                maxlength="150"
+                                rows="3"
+                                required
+                            ></textarea>
+                            <div class="word-count">
+                                <span id="wordCount">0</span>/30 words
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-primary">
+                            Add Expense
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Column 2: Filter Expense -->
+            <div class="col">
+                <div class="dashboard-card">
+                    <h2>Filter Expense</h2>
+                    <form id="filterExpenseForm" class="expense-form">
+                        <div class="form-group">
+                            <label for="filterMode">Mode</label>
+                            <select id="filterMode" name="mode">
+                                <option value="BOTH">BOTH</option>
+                                <option value="ONLINE">ONLINE</option>
+                                <option value="OFFLINE">OFFLINE</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="filterType">Type</label>
+                            <select id="filterType" name="type">
+                                <option value="BOTH">BOTH</option>
+                                <option value="CREDIT">CREDIT</option>
+                                <option value="DEBIT">DEBIT</option>
+                            </select>
+                        </div>
+
+                        <div class="date-range">
+                            <div class="form-group">
+                                <label for="fromDate">From Date</label>
+                                <input
+                                    type="date"
+                                    id="fromDate"
+                                    name="fromDate"
+                                />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="toDate">To Date</label>
+                                <input type="date" id="toDate" name="toDate" />
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-primary">
+                            Filter
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 2: Expense Summary and List -->
+        <div class="row">
+            <div class="col-full">
+                <div class="dashboard-card">
+                    <div class="expense-summary">
+                        <div class="summary-item">
+                            <h3>Total Transactions</h3>
+                            <p><%= expenseData.summary.totalTransactions %></p>
+                        </div>
+                        <div class="summary-item">
+                            <h3>Total Credit</h3>
+                            <p class="credit">
+                                ₹<%= expenseData.summary.totalCredit.toFixed(2)
+                                %>
+                            </p>
+                        </div>
+                        <div class="summary-item">
+                            <h3>Total Debit</h3>
+                            <p class="debit">
+                                ₹<%= expenseData.summary.totalDebit.toFixed(2)
+                                %>
+                            </p>
+                        </div>
+                        <div class="summary-item">
+                            <h3>Online</h3>
+                            <p><%= expenseData.summary.onlineCount %></p>
+                        </div>
+                        <div class="summary-item">
+                            <h3>Offline</h3>
+                            <p><%= expenseData.summary.offlineCount %></p>
+                        </div>
+                    </div>
+
+                    <div class="expense-list">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th>Mode</th>
+                                    <th>Amount</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% expenseData.transactions.forEach((expense,
+                                index) => { %>
+                                <tr>
+                                    <td><%= index + 1 %></td>
+                                    <td>
+                                        <%= new
+                                        Date(expense.date).toLocaleDateString()
+                                        %>
+                                    </td>
+                                    <td
+                                        class="<%= expense.type.toLowerCase() %>"
+                                    >
+                                        <%= expense.type %>
+                                    </td>
+                                    <td><%= expense.mode %></td>
+                                    <td>₹<%= expense.amount.toFixed(2) %></td>
+                                    <td><%= expense.description %></td>
+                                </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("../partials/footer") %>

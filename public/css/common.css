@@ -32,7 +32,7 @@ body {
 #app {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    /* min-height: 100vh; */
 }
 
 /* Header Styles */
@@ -174,5 +174,346 @@ body {
     .footer-links {
         flex-wrap: wrap;
         justify-content: center;
+    }
+}
+
+/* ### Register */
+
+/* Auth Styles */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 140px); /* Account for header/footer */
+    padding: 2rem;
+}
+
+.auth-card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 2rem;
+    width: 100%;
+    max-width: 500px;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 500;
+}
+
+.form-group input {
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+.error-message {
+    color: #ef4444;
+    font-size: 0.875rem;
+    display: none;
+}
+
+/* Password Strength Meter */
+.password-strength {
+    margin-top: 0.5rem;
+}
+
+.strength-meter {
+    height: 4px;
+    background: #e5e7eb;
+    border-radius: 2px;
+    margin-bottom: 0.25rem;
+    transition: width 0.3s, background-color 0.3s;
+}
+
+.strength-text {
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+/* Tooltip */
+.info-icon {
+    cursor: help;
+    display: inline-block;
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.tooltip {
+    position: absolute;
+    background: #1f2937;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    font-size: 0.875rem;
+    z-index: 100;
+    display: none;
+    max-width: 200px;
+    box-shadow: var(--shadow-md);
+}
+
+/* Auth Footer */
+.auth-footer {
+    text-align: center;
+    margin-top: 1rem;
+    color: var(--text-light);
+}
+
+.auth-footer a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Button */
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+}
+
+.btn-primary:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+}
+
+/* ### Login */
+/* Login Specific Styles */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5rem 0 1rem;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.remember-me input {
+    width: 1rem;
+    height: 1rem;
+}
+
+.forgot-password {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.875rem;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Animation for form */
+.auth-card {
+    animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ### Dashboard */
+/* Dashboard Styles */
+.dashboard-container {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.dashboard-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.dashboard-card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    height: 100%;
+}
+
+.row {
+    display: flex;
+    gap: 2rem;
+}
+
+.col {
+    flex: 1;
+}
+
+.col-full {
+    flex: 100%;
+}
+
+.expense-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.expense-form select,
+.expense-form input[type="date"],
+.expense-form input[type="number"],
+.expense-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+}
+
+.expense-form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.word-count {
+    text-align: right;
+    font-size: 0.875rem;
+    color: var(--text-light);
+}
+
+.date-range {
+    display: flex;
+    gap: 1rem;
+}
+
+.date-range .form-group {
+    flex: 1;
+}
+
+/* Expense Summary */
+.expense-summary {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.summary-item {
+    background: var(--background);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    flex: 1;
+    min-width: 150px;
+}
+
+.summary-item h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+    color: var(--text-light);
+}
+
+.summary-item p {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.summary-item .credit {
+    color: #10b981;
+}
+
+.summary-item .debit {
+    color: #ef4444;
+}
+
+/* Expense List */
+.expense-list {
+    overflow-x: auto;
+}
+
+.expense-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.expense-list th,
+.expense-list td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.expense-list th {
+    background: var(--background);
+    font-weight: 600;
+}
+
+.expense-list tr:hover {
+    background: #f9fafb;
+}
+
+.expense-list .credit {
+    color: #10b981;
+    font-weight: 500;
+}
+
+.expense-list .debit {
+    color: #ef4444;
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .expense-summary {
+        flex-direction: column;
+    }
+
+    .date-range {
+        flex-direction: column;
+        gap: 1rem;
     }
 }
