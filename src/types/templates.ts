@@ -1,3 +1,5 @@
+// File: src/types/templates.ts
+
 // Base template data (shared across all pages)
 export interface BaseTemplateData {
     pageTitle: string;

@@ -20,11 +20,18 @@
     "devDependencies": {
         "@types/ejs": "^3.1.5",
         "@types/express": "^5.0.1",
+        "@types/morgan": "^1.9.9",
+        "@types/winston": "^2.4.4",
         "ts-node": "^10.9.2",
         "typescript": "^5.8.2"
     },
     "dependencies": {
+        "colors": "^1.4.0",
+        "dotenv": "^16.4.7",
         "ejs": "^3.1.10",
-        "express": "^5.1.0"
+        "express": "^5.1.0",
+        "morgan": "^1.10.0",
+        "winston": "^3.17.0",
+        "winston-daily-rotate-file": "^5.0.0"
     }
 }

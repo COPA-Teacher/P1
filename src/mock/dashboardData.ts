@@ -1,3 +1,4 @@
+// File: src/mock/dashboardData.ts
 import { DashboardTemplateData } from "../types/templates";
 
 export const mockDashboardData: DashboardTemplateData = {
