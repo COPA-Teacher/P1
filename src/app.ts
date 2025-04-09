@@ -1,30 +1,40 @@
 import express from "express";
-import path from "path";
-import { fileURLToPath } from "url";
-
-// ES module compatible __dirname replacement
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import { appConfig } from "./configs/app.config.js";
+import pagesRouter from "./routes/pages.js";
+import {
+    httpLogger,
+    errorLogger,
+    requestLogger,
+} from "./middlewares/logger.middleware.js";
+import logger from "./services/logger.js";
 
 const app = express();
 
-app.set("view engine", "ejs");
+// Initialize logger with app config
+logger.info("Application initializing", {
+    environment: process.env.NODE_ENV,
+    viewEngine: appConfig.viewEngine,
+});
 
-app.set("views", path.join(__dirname, "views"));
-// app.set("views", [
-//     path.join(__dirname, "../views/pages"),
-//     path.join(__dirname, "../views/protected"),
-//     path.join(__dirname, "../views"),
-// ]);
+app.set("view engine", appConfig.viewEngine);
+app.set("views", appConfig.viewsPath);
 
-app.use(express.static(path.join(__dirname, "../public")));
-
+// Middlewares with logging
+app.use(requestLogger);
+app.use(httpLogger);
+app.use(express.static(appConfig.staticDir));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded(appConfig.urlEncoded));
 
-// Import routes
-import pagesRouter from "./routes/pages.js";
-
+// Routes
 app.use("/", pagesRouter);
+
+// Error handling (with detailed logging)
+app.use(errorLogger);
+
+logger.info("Application started successfully", {
+    PORT: appConfig.PORT,
+    staticDir: appConfig.staticDir,
+});
 
 export default app;
